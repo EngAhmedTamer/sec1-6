@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الوحدة الثالثة · Unit 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06121A;--p:rgba(16,38,52,.72);--p2:#0F2A3A;--ln:#1E4357;--ink:#E8F6FF;--dim:#8FB3C7;--a:#22E3A0;--b:#38BDF8;--ok:#34D399;--bad:#FB7185;--w:#FBBF24;--g:linear-gradient(120deg,#22E3A0,#38BDF8);--sh:0 10px 30px rgba(0,0,0,.25);--on:#04202A}
+@media(prefers-color-scheme:light){:root:not([data-theme=dark]){--bg:#EDF8F6;--p:rgba(255,255,255,.88);--p2:#E6F3F7;--ln:#C5DDE6;--ink:#0B2230;--dim:#4F6E80;--a:#0E9F6E;--b:#0284C7;--sh:0 8px 24px rgba(10,60,80,.08)}}
+:root[data-theme=light]{--bg:#EDF8F6;--p:rgba(255,255,255,.88);--p2:#E6F3F7;--ln:#C5DDE6;--ink:#0B2230;--dim:#4F6E80;--a:#0E9F6E;--b:#0284C7;--sh:0 8px 24px rgba(10,60,80,.08)}
+*{box-sizing:border-box}
+html{scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.8 Cairo,Inter,system-ui,sans-serif;min-height:100vh;background-image:radial-gradient(700px 420px at 85% -5%,rgba(34,227,160,.16),transparent 60%),radial-gradient(600px 400px at 0% 100%,rgba(56,189,248,.14),transparent 60%);background-attachment:fixed}
+html[lang=en] body{font-family:Inter,Cairo,system-ui,sans-serif}
+button{font-family:inherit}
+header{position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:var(--bg);background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--ln);padding-top:env(safe-area-inset-top,0px)}
+.hb{max-width:1100px;margin:0 auto;padding:8px 14px;display:flex;align-items:center;gap:8px}
+.brand{flex:1;font-weight:800;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip{padding:5px 12px;border-radius:99px;background:var(--p);border:1px solid var(--ln);font-weight:700;font-size:13px;color:var(--w);white-space:nowrap}
+.btn{border:0;border-radius:12px;padding:11px 20px;font-weight:700;font-size:15px;cursor:pointer;color:var(--on);background:var(--g);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sm{background:var(--p);color:var(--ink);border:1px solid var(--ln);padding:6px 12px;font-size:13px}
+.btn.ghost{background:var(--p2);color:var(--ink);border:1px solid var(--ln)}
+#bar{height:3px;width:0;background:var(--g);transition:width .4s}
+.shell{max-width:1100px;margin:0 auto;padding:14px;display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.shell{grid-template-columns:280px minmax(0,1fr);align-items:start}}
+nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+nav button{flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:14px;border:1px solid var(--ln);background:var(--p);color:var(--ink);font-weight:600;font-size:13px;cursor:pointer;text-align:start;white-space:nowrap}
+nav button.on{background:var(--g);color:var(--on);border-color:transparent}
+nav .bd{font-size:11px;padding:1px 8px;border-radius:99px;background:rgba(52,211,153,.2);color:var(--ok);font-weight:800}
+nav button.on .bd{background:rgba(4,32,42,.18);color:var(--on)}
+@media(min-width:900px){nav{position:sticky;top:76px;flex-direction:column;overflow:visible}nav button{white-space:normal;width:100%;font-size:14px;padding:11px 14px}nav button span.t{flex:1}}
+.card{background:var(--p);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--ln);border-radius:20px;padding:16px 18px;box-shadow:var(--sh)}
+.pill{display:inline-block;padding:4px 14px;border-radius:99px;border:1px solid var(--ln);background:var(--p);font-size:12px;color:var(--b);font-weight:700}
+h1,h2{line-height:1.4;margin:10px 0 6px}
+h1{font-size:clamp(26px,5.5vw,42px)}h2{font-size:clamp(21px,4vw,28px)}
+.grad{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dim{color:var(--dim)}
+.hero{padding:10px 0 6px}
+.steps{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:14px 0}
+.step{display:flex;gap:12px;align-items:center}
+.step i{flex:none;width:36px;height:36px;border-radius:12px;background:var(--g);color:var(--on);display:grid;place-items:center;font:800 16px Inter,sans-serif;font-style:normal}
+.lc{cursor:pointer;display:flex;gap:12px;align-items:center;transition:transform .15s}
+.lc:hover{transform:translateY(-3px)}
+.lc .ic{font-size:30px;width:54px;height:54px;border-radius:16px;background:var(--p2);display:grid;place-items:center;flex:none}
+.lc b{display:block;font-size:16px}.lc small{color:var(--dim)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.seg{display:inline-flex;gap:4px;padding:4px;border-radius:14px;background:var(--p2);border:1px solid var(--ln);margin-top:8px}
+.seg button{border:0;background:transparent;color:var(--dim);padding:8px 16px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer}
+.seg button.on{background:var(--g);color:var(--on)}
+.sec h3{display:flex;gap:10px;align-items:center;margin:0 0 4px;font-size:18px;line-height:1.4}
+.sec h3 .ic{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--p2);font-size:22px}
+.sec small{display:block;color:var(--b);font:700 12px Inter,sans-serif;direction:ltr;text-align:start}
+ul.pts{list-style:none;margin:8px 0 0;padding:0}
+.pts li{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--ln);font-size:15px}
+.pts li:last-child{border:0}
+.pts li::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--g);margin-top:12px}
+.tip{margin-top:10px;padding:10px 12px;border-radius:14px;border:1.5px dashed var(--w);background:rgba(251,191,36,.08);font-size:14px}
+.tip b{color:var(--w)}
+.rec{margin-top:16px;border-color:var(--a)}
+.rec h3{margin:0 0 6px;font-size:18px}
+.nx{margin:20px 0 40px;display:flex;gap:10px;flex-wrap:wrap}
+.qc{margin-top:14px}
+.meta{display:flex;justify-content:space-between;font-size:13px;color:var(--dim);font-weight:700;margin-bottom:8px}
+.pb{height:7px;border-radius:9px;background:var(--p2);overflow:hidden;margin-bottom:14px}.pb i{display:block;height:100%;background:var(--g);transition:width .3s}
+.qt{font-size:18px;font-weight:700;margin-bottom:12px;line-height:1.8}
+.os{display:grid;gap:8px}
+.o{display:flex;gap:10px;align-items:center;padding:11px 12px;border-radius:13px;border:1.5px solid var(--ln);background:var(--p2);color:var(--ink);font-weight:600;font-size:15px;cursor:pointer;text-align:start}
+.o b{flex:none;width:28px;height:28px;border-radius:9px;background:var(--p);display:grid;place-items:center;font-size:13px}
+.o:hover:not(:disabled){border-color:var(--b)}
+.o:disabled{cursor:default}
+.o.ok{border-color:var(--ok);background:rgba(52,211,153,.18)}
+.o.bad{border-color:var(--bad);background:rgba(251,113,133,.16)}
+.ex{margin-top:12px;padding:11px 13px;border-radius:13px;background:rgba(56,189,248,.1);border-inline-start:4px solid var(--b);font-size:14px;font-weight:600;line-height:1.9}
+.ex.no{background:rgba(251,113,133,.1);border-color:var(--bad)}
+.res{text-align:center;padding:24px 16px}
+.big{font-size:44px;font-weight:800}
+.wr{margin-top:12px;padding:12px;border-radius:14px;background:var(--p2);border:1px solid var(--ln);font-size:14px}
+.wr b{display:block;margin-bottom:4px}
+.wr .ca{color:var(--ok);font-weight:700}
+footer{max-width:1100px;margin:0 auto;padding:10px 14px 40px;text-align:center;color:var(--dim);font-size:13px}
+footer b{color:var(--ink);font-size:16px;display:block}
+</style>
+</head>
+<body>
+<header>
+ <div class="hb"><span class="brand" id="brand"></span><span class="chip" id="xp"></span><button class="btn sm" id="th" onclick="toggleTheme()">🌓</button><button class="btn sm" id="lg" onclick="setLang()"></button></div>
+ <div id="bar"></div>
+</header>
+<div class="shell">
+ <nav id="nav"></nav>
+ <main id="main"></main>
+</div>
+<footer><b>م/ أحمد تامر</b><div id="ft"></div><div dir="ltr">📞 01026309600</div></footer>
+<script>
+const $=s=>document.querySelector(s);
+const TF=[['صح','True'],['خطأ','False']];
+const Q=(q,o,a,x)=>({q,o,a,x});
+
+const S={
+ar:{brand:'الوحدة الثالثة',hp:'الصف الأول الثانوي · البرمجة والذكاء الاصطناعي',ht:'الوحدة الثالثة: <span class="grad">أمن المعلومات</span>',hs:'شرح مبسط على هيئة نقاط + أسئلة بعد كل درس + امتحان ختامي',home:'الرئيسية',lesson:'الدرس',final:'الامتحان الختامي',read:'الشرح',qs:'الأسئلة',rec:'⚡ ملخص الدرس في 30 ثانية',startq:'ابدأ أسئلة الدرس ←',how:'إزاي تذاكر؟',h1:'اقرأ الشرح',h1d:'نقاط بسيطة ومثال «بساطة كده» لكل فكرة',h2:'جاوب أسئلة الدرس',h2d:'أسئلة كتير بعد كل درس وتشرحلك الإجابة',h3:'ادخل الامتحان الختامي',h3d:'30 سؤال من كل الدروس بدون كلمة سر',lessons:'دروس الوحدة',simple:'بساطة كده',q:'سؤال',right:'إجابة صحيحة!',wrong:'مش دي — اقرا الشرح.',nextq:'السؤال التالي ←',res:'شوف النتيجة',score:'نتيجتك',of:'من',retry:'🔁 أعد المحاولة',nextl:'الدرس التالي ←',toexam:'🏆 الامتحان الختامي',backr:'📖 راجع الشرح',review:'راجع الأسئلة اللي غلطت فيها',correct:'الإجابة الصحيحة',m1:'🏆 ممتاز! أنت فاهم الدرس كويس',m2:'👏 كويس جدًا — راجع الغلطات بسرعة',m3:'💪 محتاج مراجعة — ارجع للشرح وجرّب تاني',examt:'الامتحان الختامي',examd:'30 سؤال عشوائي من الدروس الخمسة (6 من كل درس). مفيش كلمة سر — ابدأ وقت ما تحب.',startex:'ابدأ الامتحان ←',lang:'English',ft:'الوحدة الثالثة كاملة',best:'أفضل نتيجة',tohome:'🏠 الرئيسية',nq:'سؤال',done:'تم'},
+en:{brand:'Unit 3',hp:'Grade 10 · Programming & AI',ht:'Unit 3: <span class="grad">Information Security</span>',hs:'Simple bullet-point explanations + questions after every lesson + a final exam',home:'Home',lesson:'Lesson',final:'Final Exam',read:'Explanation',qs:'Questions',rec:'⚡ 30-second recap',startq:'Start lesson questions →',how:'How to study',h1:'Read the explanation',h1d:'Simple points and an "In simple words" example for every idea',h2:'Answer the lesson questions',h2d:'Lots of questions after each lesson, each with an explanation',h3:'Take the final exam',h3d:'30 questions from all lessons, no password',lessons:'Unit lessons',simple:'In simple words',q:'Question',right:'Correct!',wrong:'Not this one — read the explanation.',nextq:'Next question →',res:'See result',score:'Your score',of:'of',retry:'🔁 Try again',nextl:'Next lesson →',toexam:'🏆 Final exam',backr:'📖 Review the explanation',review:'Review the questions you missed',correct:'Correct answer',m1:'🏆 Excellent! You understand this lesson well',m2:'👏 Very good — quickly review your mistakes',m3:'💪 Needs review — go back to the explanation and try again',examt:'Final Exam',examd:'30 random questions from the 5 lessons (6 from each). No password — start whenever you like.',startex:'Start the exam →',lang:'العربية',ft:'Complete Unit 3',best:'Best score',tohome:'🏠 Home',nq:'questions',done:'Done'}
+};
+
+const LS=[
+/* ============ 3-1 ============ */
+{no:'3-1',ic:'🛡️',n:['أمن المعلومات والتهديدات','Information Security & Threats'],
+goal:['هتفهم يعني إيه أمن معلومات، وإيه أنواع الهجمات والبرمجيات الخبيثة','You will learn what information security is, and the main attacks and types of malware'],
+secs:[
+{ic:'🛡️',t:['أمن المعلومات','Information Security'],pts:[
+['أمن المعلومات = إدارة المعلومات بشكل صحيح والحفاظ عليها آمنة','Information security = managing information properly and keeping it safe'],
+['المعلومات هي بياناتك وحساباتك وفلوسك وملفاتك','Information means your data, accounts, money and files'],
+['لو اتسرقت أو اتغيّرت أو ضاعت = مشاكل كبيرة','If it is stolen, changed or lost, the damage can be serious'],
+['وليها 3 عناصر أساسية اسمها مثلث CIA','It rests on 3 core elements called the CIA triad']],
+tip:['فكّرها زي خزنة البنك: محدش يفتحها غير صاحبها، واللي جواها ميتغيرش، وتقدر تفتحها وقت ما تحتاج.','Think of a bank vault: only the owner opens it, what is inside never changes, and you can open it whenever you need.']},
+{ic:'🔒',t:['[1] السرية','[1] Confidentiality'],pts:[
+['فقط الأفراد المصرح لهم يقدروا يوصلوا للمعلومات','Only authorized people can access the information'],
+['مثال: محدش يشوف رسايلك الخاصة غيرك','Example: nobody but you can read your private messages'],
+['لو شخص غير مصرح شاف المعلومة = السرية اتكسرت','If an unauthorized person sees it, confidentiality is broken']]},
+{ic:'✅',t:['[2] السلامة','[2] Integrity'],pts:[
+['المعلومات لم يتم تدميرها أو العبث بها أو محوها','Information has not been destroyed, tampered with or erased'],
+['مثال: حد غيّر درجتك في السيستم من غير صلاحية','Example: someone changes your grade in the system without permission'],
+['لو المعلومة اتغيّرت بدون إذن = السلامة اتكسرت','If it is changed without permission, integrity is broken']]},
+{ic:'⏰',t:['[3] التوافرية','[3] Availability'],pts:[
+['يمكن الوصول للمعلومات في أي وقت عند الحاجة','Information can be accessed any time it is needed'],
+['مثال: موقع اتعطل بسبب هجوم إلكتروني','Example: a website goes down because of a cyber attack'],
+['لو مقدرتش توصل للمعلومة وقت ما تحتاجها = التوافرية اتكسرت','If you cannot reach it when needed, availability is broken']],
+tip:['أي هجوم بيكسر واحدة من التلاتة: سرية أو سلامة أو توافرية.','Every attack breaks at least one of the three: confidentiality, integrity or availability.']},
+{ic:'🚪',t:['الوصول غير المصرح به','Unauthorized access'],pts:[
+['الوصول إلى نظام بشكل غير قانوني','Getting into a system illegally'],
+['مثال: تدخل على حساب حد بالباسورد بتاعه من غير إذنه','Example: logging in to someone else account with their password without permission']]},
+{ic:'💥',t:['الاختراق','Cracking'],pts:[
+['الوصول غير القانوني لنظام بهدف التلاعب بالبيانات أو محوها أو سرقتها','Illegally accessing a system to tamper with, erase or steal data'],
+['اللي بيرتكبه اسمه المخترق (Cracker)','The person who does it is called a Cracker']]},
+{ic:'⚖️',t:['الجريمة الإلكترونية','Cybercrime'],pts:[
+['أفعال إجرامية بتحصل عبر شبكات الكمبيوتر','Criminal acts committed through computer networks'],
+['بتشمل: انتهاك قانون الوصول غير المصرح به (زي استخدام هوية وكلمة مرور شخص آخر)','Includes: violating the unauthorized-access law (e.g. using another person identity and password)'],
+['جرائم العبث بالسجلات الإلكترونية','Crimes of tampering with electronic records'],
+['جرائم قائمة على الشبكة: احتيال، تشهير، انتهاك حقوق مؤلف','Network-based crimes: fraud, defamation, copyright infringement']]},
+{ic:'🦠',t:['البرمجيات الخبيثة','Malware'],pts:[
+['مصطلح عام للبرامج الضارة المصممة لإلحاق الضرر بأجهزة الكمبيوتر','A general term for harmful programs designed to damage computers'],
+['الإصابة بتحصل عبر: مواقع الويب، مرفقات البريد، محركات USB، الشبكات','Infection happens through: websites, email attachments, USB drives, networks'],
+['أنواعها: فيروس • حصان طروادة • دودة • تجسس • فدية','Types: virus • Trojan horse • worm • spyware • ransomware']]},
+{ic:'🧫',t:['فيروس الكمبيوتر','Computer virus'],pts:[
+['برنامج مصمم لإحداث ضرر متعمد','A program designed to cause deliberate harm'],
+['زي تدمير البيانات أو البرامج','Such as destroying data or programs']]},
+{ic:'🐴',t:['حصان طروادة','Trojan horse'],pts:[
+['برنامج متنكر كبرنامج شرعي','A program disguised as a legitimate one'],
+['يتسلل للنظام ويبدأ الهجمات بهدوء','It sneaks into the system and quietly starts attacking']],
+tip:['زي هدية شكلها حلو وجواها مصيبة: «برنامج تعديل صور مجاني» وهو بيسرق بياناتك.','Like a nice-looking gift hiding trouble: a "free photo editor" that steals your data.']},
+{ic:'🪱',t:['الدودة','Worm'],pts:[
+['برنامج بينسخ نفسه','A program that copies itself'],
+['وبينتشر عبر الإنترنت ويوسّع نطاق الإصابة','And spreads over the Internet, widening the infection']]},
+{ic:'🕵️',t:['برامج التجسس','Spyware'],pts:[
+['بتجمع معلوماتك الشخصية من غير علمك وتبعتها لأطراف ثالثة','Collects your personal info without your knowledge and sends it to third parties'],
+['منها: مسجل لوحة المفاتيح (Keylogger) اللي بيسجل كل ضغطة','Includes: Keylogger, which records every key you press'],
+['ومنها: برنامج الإعلانات (Adware) اللي بيعرض إعلانات غير مرغوبة','And Adware, which shows unwanted ads']]},
+{ic:'🔐',t:['برامج الفدية','Ransomware'],pts:[
+['بتخلّي بياناتك غير قابلة للوصول','Makes your data inaccessible'],
+['وبتطلب فدية (فلوس) علشان ترجّعها','And demands a ransom (money) to restore it']]}
+],
+rec:[['أمن المعلومات = سرية + سلامة + توافرية (CIA)','Information security = Confidentiality + Integrity + Availability (CIA)'],['الاختراق = دخول غير قانوني بهدف التلاعب أو السرقة','Cracking = illegal access to tamper or steal'],['الفيروس يدمّر • الطروادة تتنكر • الدودة تنسخ نفسها • التجسس يسرق • الفدية تحجز البيانات','Virus destroys • Trojan disguises • Worm self-copies • Spyware steals • Ransomware locks data']],
+qs:[
+Q(['أمن المعلومات معناه:','Information security means:'],[['إدارة المعلومات بشكل صحيح والحفاظ عليها آمنة','Managing information properly and keeping it safe'],['تسريع الإنترنت','Speeding up the Internet'],['حذف المعلومات القديمة','Deleting old information']],0,['أمن المعلومات = إدارة المعلومات بشكل صحيح وحمايتها.','Information security = managing information properly and protecting it.']),
+Q(['العناصر الأساسية الثلاثة لأمن المعلومات هي:','The three core elements of information security are:'],[['السرية والسلامة والتوافرية','Confidentiality, integrity, availability'],['السرعة والحجم واللون','Speed, size, color'],['الكتابة والقراءة والحذف','Write, read, delete']],0,['مثلث CIA: Confidentiality, Integrity, Availability.','The CIA triad: Confidentiality, Integrity, Availability.']),
+Q(['موظف شاف درجات زملائه بدون صلاحية. أي عنصر اتكسر؟','An employee viewed colleagues grades without permission. Which element was broken?'],[['السرية','Confidentiality'],['السلامة','Integrity'],['التوافرية','Availability']],0,['السرية = المصرح لهم فقط هم اللي يشوفوا المعلومات.','Confidentiality = only authorized people may see the information.']),
+Q(['هجوم إلكتروني عطّل موقع ويب. أي عنصر اتأثر؟','A cyber attack took a website down. Which element was affected?'],[['التوافرية','Availability'],['السرية','Confidentiality'],['السلامة','Integrity']],0,['الموقع مش متاح وقت الحاجة = التوافرية.','The site is not available when needed = availability.']),
+Q(['حد غيّر رصيد حسابك في السيستم من غير ما تعرف. أي عنصر اتكسر؟','Someone changed your account balance in the system without you knowing. Which element was broken?'],[['السلامة','Integrity'],['السرية','Confidentiality'],['التوافرية','Availability']],0,['السلامة = المعلومات لم يتم العبث بها.','Integrity = information has not been tampered with.']),
+Q(['الشخص اللي بيرتكب الاختراق اسمه المخترق (Cracker).','The person who commits cracking is called a Cracker.'],TF,0,['صح، والاختراق هو الوصول غير القانوني لنظام للتلاعب بالبيانات أو محوها أو سرقتها.','True. Cracking is illegally accessing a system to tamper with, erase or steal data.']),
+Q(['استخدام هوية وكلمة مرور شخص آخر للدخول على كمبيوتر يعتبر:','Using another person identity and password to access a computer is:'],[['وصول غير مصرح به (جريمة إلكترونية)','Unauthorized access (a cybercrime)'],['استخدام مسموح','Allowed use'],['تحديث للنظام','A system update']],0,['ده انتهاك لقانون الوصول غير المصرح به.','This violates the unauthorized-access law.']),
+Q(['أي مما يلي من الجرائم القائمة على الشبكة؟','Which of these is a network-based crime?'],[['الاحتيال والتشهير وانتهاك حقوق المؤلف','Fraud, defamation, copyright infringement'],['تحديث نظام التشغيل','Updating the operating system'],['عمل نسخة احتياطية','Making a backup']],0,['الاحتيال والتشهير وانتهاك حقوق المؤلف جرائم قائمة على الشبكة.','Fraud, defamation and copyright infringement are network-based crimes.']),
+Q(['البرمجيات الخبيثة (Malware) يمكن أن تنتقل عبر:','Malware can spread through:'],[['مواقع الويب ومرفقات البريد ومحركات USB','Websites, email attachments, USB drives'],['الكهرباء فقط','Electricity only'],['لا يمكن أن تنتقل','It cannot spread']],0,['دي طرق الإصابة المعروفة، علشان كده نحذر من الروابط والمرفقات و USB.','These are the known infection routes, so be careful with links, attachments and USB drives.']),
+Q(['برنامج متنكر كبرنامج شرعي ويتسلل للنظام ويبدأ الهجمات بهدوء هو:','A program disguised as a legitimate one that sneaks in and attacks quietly is a:'],[['حصان طروادة','Trojan horse'],['دودة','Worm'],['برنامج فدية','Ransomware']],0,['حصان طروادة = تنكّر + تسلل.','Trojan horse = disguise + infiltration.']),
+Q(['برنامج بينسخ نفسه وينتشر عبر الإنترنت هو:','A program that copies itself and spreads over the Internet is a:'],[['دودة','Worm'],['حصان طروادة','Trojan horse'],['Adware','Adware']],0,['الدودة بتنسخ نفسها وتنتشر لوحدها.','A worm copies itself and spreads on its own.']),
+Q(['مسجل لوحة المفاتيح (Keylogger) هو نوع من:','A Keylogger is a type of:'],[['برامج التجسس','Spyware'],['الدودة','Worm'],['الفيروس','Virus']],0,['Keylogger بيسجل ضغطات المفاتيح ويبعتها لطرف ثالث = تجسس.','A keylogger records keystrokes and sends them to a third party = spyware.']),
+Q(['برنامج يجعل بياناتك غير قابلة للوصول ويطالب بفدية لاستعادتها هو:','A program that makes your data inaccessible and demands a ransom is:'],[['Ransomware','Ransomware'],['Adware','Adware'],['Keylogger','Keylogger']],0,['Ransomware = برنامج الفدية.','Ransomware = ransom software.']),
+Q(['حمّلت برنامج «تعديل صور مجاني» وبعدها موبايلك بدأ يبعت جهات اتصالك لجهة مجهولة. إيه النوع؟ وليه مش دودة؟','You installed a "free photo editor" and your phone started sending your contacts to an unknown party. Which type, and why is it not a worm?'],[['حصان طروادة — متنكر في شكل برنامج مفيد ومبينسخش نفسه','Trojan horse — disguised as a useful app and it does not copy itself'],['دودة — لأنه بيتنقل عبر الإنترنت','Worm — because it spreads over the Internet'],['فيروس — لأنه بيمسح الملفات','Virus — because it erases files']],0,['البرنامج اتنكّر في شكل تطبيق مفيد (طروادة)، والدودة لازم تنسخ نفسها وتنتشر.','The app disguised itself as useful (Trojan); a worm must copy itself and spread.']),
+Q(['برنامج الإعلانات (Adware) بيعرض إعلانات غير مرغوبة.','Adware shows unwanted advertisements.'],TF,0,['صح، وهو من أنواع برامج التجسس حسب الكتاب.','True, and the book lists it under spyware.'])
+]},
+/* ============ 3-2 ============ */
+{no:'3-2',ic:'🔑',n:['كلمات المرور والمصادقة وإجراءات الحماية','Passwords, Authentication & Protection'],
+goal:['هتتعلم تعمل كلمة مرور قوية، وأنواع المصادقة، وإزاي تحمي جهازك','You will learn to create strong passwords, the types of authentication, and how to protect your device'],
+secs:[
+{ic:'🔑',t:['كلمة المرور','Password'],pts:[
+['سلسلة من الأحرف تُستخدم للتحقق من هوية المستخدم وأنه صاحب الحساب','A string of characters used to verify the user identity and that they own the account']]},
+{ic:'💪',t:['إرشادات كلمة مرور قوية','Strong password guidelines'],pts:[
+['تكون طويلة ومعقدة (أحرف كبيرة وصغيرة وأرقام ورموز)','Long and complex (upper and lower case letters, numbers, symbols)'],
+['متكونش معلومات شخصية سهلة التخمين (اسمك، تاريخ ميلادك)','Not personal info that is easy to guess (your name, birth date)'],
+['متستخدمهاش في أكتر من حساب','Never reuse it on more than one account']],
+tip:['كلمة زي 12-03-2008 ضعيفة جدًا، أما Tq#9x!Lm2$vR8 فقوية.','A password like 12-03-2008 is very weak, while Tq#9x!Lm2$vR8 is strong.']},
+{ic:'🔢',t:['كلمة المرور لمرة واحدة','One-Time Password (OTP)'],pts:[
+['كلمة مرور بتتغير على فترات منتظمة','A password that changes at regular intervals'],
+['ولا يمكن استخدامها إلا مرة واحدة','And can be used only once']],
+tip:['كود الـ SMS اللي البنك بيبعتهولك وبيبطل بعد ما تستخدمه.','The SMS code your bank sends you, which stops working after you use it.']},
+{ic:'✅',t:['المصادقة','Authentication'],pts:[
+['عملية التحقق من هوية المستخدم على كمبيوتر أو شبكة','The process of verifying a user identity on a computer or network']]},
+{ic:'🧩',t:['أنواع المصادقة (3)','Types of authentication (3)'],pts:[
+['🧠 قائمة على المعرفة: شيء تعرفه — كلمة مرور، PIN','🧠 Knowledge-based: something you know — password, PIN'],
+['📱 قائمة على الامتلاك: شيء تملكه — هاتف، بطاقة، OTP','📱 Possession-based: something you have — phone, card, OTP'],
+['👆 قائمة على السمات الحيوية: شيء أنت عليه — بصمة، وجه، قزحية','👆 Biometric-based: something you are — fingerprint, face, iris']]},
+{ic:'🛡️',t:['المصادقة الثنائية','Two-factor authentication'],pts:[
+['الجمع بين نوعين من أنواع المصادقة لحماية أقوى','Combining two types of authentication for stronger protection'],
+['لازم النوعين يكونوا مختلفين (مش بصمة + وجه لأنهم نفس النوع)','The two must be different types (not fingerprint + face, because both are biometric)']],
+tip:['البنك بيطلب الباسورد (معرفة) ثم كود على الموبايل (امتلاك). حتى لو حد سرق الباسورد مش هيدخل من غير موبايلك.','The bank asks for your password (knowledge) then a code on your phone (possession). Even if someone steals the password, they cannot enter without your phone.']},
+{ic:'🚦',t:['التحكم في الوصول','Access control'],pts:[
+['طريقة للحد من الوصول إلى الأنظمة أو البيانات','A way to limit access to systems or data'],
+['بحيث يُسمح فقط للمستخدمين المصرح لهم','So that only authorized users are allowed']]},
+{ic:'🧱',t:['جدار الحماية','Firewall'],pts:[
+['نظام يُثبَّت عند نقاط دخول الشبكة','A system installed at the network entry points'],
+['يمنع الوصول غير المصرح به من الخارج','Blocks unauthorized access from outside'],
+['ويمنع تسرب المعلومات','And prevents information leakage']]},
+{ic:'🧰',t:['إجراءات مواجهة فيروسات الكمبيوتر','Protecting against computer viruses'],pts:[
+['تثبيت برامج مكافحة الفيروسات وتحديثها باستمرار','Install antivirus software and keep it updated'],
+['تحديث نظام التشغيل','Update the operating system'],
+['عدم فتح مرفقات أو روابط مجهولة','Do not open unknown attachments or links'],
+['الفحص الدوري لأجهزة USB','Scan USB drives regularly']]}
+],
+rec:[['كلمة المرور القوية: طويلة، معقدة، مش شخصية، ومش مكررة','Strong password: long, complex, not personal, never reused'],['3 أنواع مصادقة: معرفة • امتلاك • سمات حيوية','3 authentication types: knowledge • possession • biometrics'],['المصادقة الثنائية = نوعين مختلفين معًا','Two-factor = two different types together']],
+qs:[
+Q(['كلمة المرور هي:','A password is:'],[['سلسلة أحرف للتحقق من هوية المستخدم وأنه صاحب الحساب','A string of characters that verifies the user and that they own the account'],['برنامج لمكافحة الفيروسات','An antivirus program'],['جدار حماية','A firewall']],0,['كلمة المرور بتثبت إنك صاحب الحساب.','A password proves you are the account owner.']),
+Q(['أي كلمة مرور من دي الأقوى؟','Which of these passwords is the strongest?'],[['Tq#9x!Lm2$vR8','Tq#9x!Lm2$vR8'],['12-03-2008','12-03-2008'],['password123','password123']],0,['طويلة ومعقدة وفيها حروف وأرقام ورموز ومش معلومة شخصية.','Long, complex, mixes letters, numbers and symbols, and is not personal info.']),
+Q(['الأفضل استخدام نفس كلمة المرور في كل حساباتك علشان متنساهاش.','It is best to use the same password on all accounts so you do not forget it.'],TF,1,['غلط! لو اتسرقت من حساب هتتسرق كل الحسابات.','False! If it is stolen from one account, all your accounts are at risk.']),
+Q(['ليه استخدام تاريخ الميلاد كباسورد فكرة سيئة؟','Why is using your birth date as a password a bad idea?'],[['لأنه معلومة شخصية يسهل تخمينها','Because it is personal info that is easy to guess'],['لأنه طويل جدًا','Because it is too long'],['لأنه مش أرقام','Because it is not numbers']],0,['من الإرشادات: متستخدمش معلومات شخصية.','One guideline: never use personal information.']),
+Q(['كلمة المرور لمرة واحدة (OTP) هي كلمة مرور:','A One-Time Password (OTP) is a password that:'],[['بتتغير على فترات منتظمة ولا تُستخدم إلا مرة','Changes regularly and can be used only once'],['بتفضل ثابتة طول العمر','Stays fixed forever'],['بتتكتب على ورقة','Is written on paper']],0,['زي كود الـ SMS من البنك.','Like the SMS code from your bank.']),
+Q(['المصادقة هي:','Authentication is:'],[['التحقق من هوية المستخدم على كمبيوتر أو شبكة','Verifying a user identity on a computer or network'],['تشفير الملفات','Encrypting files'],['حذف الفيروسات','Removing viruses']],0,['المصادقة = التحقق من الهوية.','Authentication = identity verification.']),
+Q(['كلمة المرور و PIN من أنواع المصادقة القائمة على:','A password and a PIN are authentication based on:'],[['المعرفة (شيء تعرفه)','Knowledge (something you know)'],['الامتلاك','Possession'],['السمات الحيوية','Biometrics']],0,['بنعرفها ونحفظها في دماغنا.','We know and remember them.']),
+Q(['البطاقة البنكية والهاتف من أنواع المصادقة القائمة على:','A bank card and a phone are authentication based on:'],[['الامتلاك (شيء تملكه)','Possession (something you have)'],['المعرفة','Knowledge'],['السمات الحيوية','Biometrics']],0,['بنملكها فعليًا.','We physically possess them.']),
+Q(['بصمة الإصبع والتعرف على الوجه من أنواع المصادقة القائمة على:','Fingerprint and face recognition are authentication based on:'],[['السمات الحيوية (شيء أنت عليه)','Biometrics (something you are)'],['المعرفة','Knowledge'],['الامتلاك','Possession']],0,['دي صفات في جسمك.','These are traits of your body.']),
+Q(['المصادقة الثنائية هي:','Two-factor authentication is:'],[['الجمع بين نوعين من أنواع المصادقة','Combining two types of authentication'],['كتابة الباسورد مرتين','Typing the password twice'],['استخدام حسابين','Using two accounts']],0,['نوعين مختلفين لحماية أقوى.','Two different types for stronger protection.']),
+Q(['البنك طلب منك الباسورد ثم كود SMS على موبايلك. إيه أنواع المصادقة المستخدمة؟','The bank asked for your password then an SMS code on your phone. Which types were used?'],[['معرفة + امتلاك','Knowledge + possession'],['معرفة + سمات حيوية','Knowledge + biometrics'],['امتلاك + سمات حيوية','Possession + biometrics']],0,['الباسورد = معرفة، الموبايل = امتلاك.','Password = knowledge, phone = possession.']),
+Q(['استخدام بصمة الإصبع + التعرف على الوجه يعتبر مصادقة ثنائية.','Using fingerprint + face recognition counts as two-factor authentication.'],TF,1,['غلط: الاتنين سمات حيوية (نفس النوع). لازم نوعين مختلفين.','False: both are biometrics (same type). The two must be different types.']),
+Q(['وظيفة جدار الحماية (Firewall):','The job of a firewall is to:'],[['منع الوصول غير المصرح به من الخارج وتسرب المعلومات','Block unauthorized access from outside and prevent information leakage'],['تسريع الإنترنت','Speed up the Internet'],['تشفير كلمات المرور','Encrypt passwords']],0,['بيتركّب عند نقاط دخول الشبكة.','It is installed at the network entry points.']),
+Q(['التحكم في الوصول (Access control) معناه:','Access control means:'],[['السماح فقط للمستخدمين المصرح لهم','Allowing only authorized users'],['السماح لأي شخص','Allowing anyone'],['حذف الحسابات','Deleting accounts']],0,['التحكم في الوصول يحدد مين يدخل لإيه.','Access control decides who can access what.']),
+Q(['أي إجراء مما يلي لا يحميك من الفيروسات؟','Which of these does NOT protect you from viruses?'],[['فتح مرفقات من مرسل مجهول','Opening attachments from an unknown sender'],['تحديث برنامج مكافحة الفيروسات','Updating your antivirus'],['فحص أجهزة USB','Scanning USB drives']],0,['المرفقات المجهولة من أشهر طرق الإصابة.','Unknown attachments are a common infection route.']),
+Q(['صديقك بيستخدم تاريخ ميلاده باسورد لكل حساباته. أفضل نصيحة؟','Your friend uses his birth date as the password for all accounts. Best advice?'],[['كلمة طويلة معقدة مختلفة لكل حساب + تفعيل المصادقة الثنائية','A long, complex, different password for each account + enable two-factor authentication'],['يغير السنة بس','Just change the year'],['يكتبها في رسالة','Write it in a message']],0,['بيخالف قاعدتين: سهولة التخمين (معلومة شخصية) + إعادة الاستخدام.','He breaks two rules: easy to guess (personal info) + reuse.'])
+]},
+/* ============ 3-3 ============ */
+{no:'3-3',ic:'🎣',n:['الاحتيال والحصول غير المصرح به على المعلومات','Fraud & Unauthorized Information Access'],
+goal:['هتتعرف على أساليب النصب الإلكتروني وإزاي تتجنبها','You will learn the tricks of online fraud and how to avoid them'],
+secs:[
+{ic:'🧾',t:['الاحتيال بالفواتير','Fraudulent billing'],pts:[
+['فاتورة احتيالية: فاتورة بتتصدّر لشخص مقابل خدمة وهمية لم يستخدمها','Fraudulent invoice: a bill issued to someone for a fake service they never used']]},
+{ic:'🖱️',t:['الاحتيال بنقرة واحدة','One-click fraud'],pts:[
+['احتيال يؤدي فيه النقر على رابط (URL) في موقع أو بريد إلكتروني','Fraud where clicking a link (URL) on a website or in an email'],
+['إلى صفحة تطلب دفعًا أو معلومات','Leads to a page that asks for payment or information']]},
+{ic:'🎣',t:['التصيّد','Phishing'],pts:[
+['احتيال يستخدم مواقع مزيفة متنكرة كمؤسسات مالية أو هيئات عامة','Fraud using fake websites that pretend to be financial institutions or public bodies'],
+['الهدف: سرقة بياناتك','The goal: steal your data']],
+tip:['رسالة بتقولك «حسابك هيتقفل! ادخل الرابط وسجّل بياناتك» = تصيّد. متدخلش!','A message saying "Your account will be closed! Click the link and enter your data" = phishing. Do not enter!']},
+{ic:'🎭',t:['الهندسة الاجتماعية','Social engineering'],pts:[
+['الحصول على المعلومات بشكل احتيالي','Obtaining information fraudulently'],
+['عن طريق استغلال الثقة والخطأ البشري','By exploiting trust and human error'],
+['ملهاش علاقة بكسر الأجهزة — الضحية هي اللي بتدّي المعلومة','It is not about breaking devices — the victim hands over the info'],
+['وليها 3 أشكال 👇','It has 3 forms 👇']]},
+{ic:'🥸',t:['[1] انتحال الشخصية','[1] Impersonation'],pts:[
+['التظاهر بأنك شخص آخر','Pretending to be someone else'],
+['زي إجراء مكالمة هاتفية باسمه','Such as making a phone call in their name']],
+tip:['حد يتصل ويقول «أنا من الدعم الفني، قولي الباسورد».','Someone calls: "I am from tech support, tell me your password."']},
+{ic:'👀',t:['[2] التجسس المباشر','[2] Shoulder surfing'],pts:[
+['التلصص على شاشة أو لوحة مفاتيح شخص','Spying on a person screen or keyboard'],
+['علشان تسرق كلمات المرور','To steal passwords']],
+tip:['حد واقف وراك في الـ ATM وبيبص على الرقم السري.','Someone behind you at the ATM watching your PIN.']},
+{ic:'🗑️',t:['[3] البحث في المهملات','[3] Dumpster diving'],pts:[
+['البحث في المهملات','Searching through trash'],
+['عن معلومات سرية تم التخلص منها','For confidential information that was thrown away']]},
+{ic:'💳',t:['التزوير','Skimming'],pts:[
+['استخراج البيانات بشكل غير قانوني','Illegally extracting data'],
+['من بطاقة ائتمان أو خصم خاصة بشخص ما','From someone credit or debit card']]},
+{ic:'📜',t:['سياسة أمن المعلومات','Information Security Policy'],pts:[
+['مجموعة من القواعد والإرشادات الأساسية','A set of basic rules and guidelines'],
+['بتضعها المنظمة لحماية معلوماتها','Set by an organization to protect its information'],
+['وبتوضح مسؤوليات الموظفين والإجراءات المتبعة','Explaining employee responsibilities and the procedures to follow']]}
+],
+rec:[['التصيّد = مواقع مزيفة لسرقة بياناتك','Phishing = fake websites to steal your data'],['الهندسة الاجتماعية = استغلال الثقة: انتحال • تجسس مباشر • بحث في المهملات','Social engineering = exploiting trust: impersonation • shoulder surfing • dumpster diving'],['Skimming = نسخ بيانات البطاقة بشكل غير قانوني','Skimming = illegally copying card data']],
+qs:[
+Q(['فاتورة بتتصدّر لشخص مقابل خدمة وهمية لم يستخدمها هي:','An invoice issued to someone for a fake service they never used is:'],[['احتيال بالفواتير','Fraudulent billing'],['تصيّد','Phishing'],['تزوير بطاقة','Skimming']],0,['ده تعريف الفاتورة الاحتيالية.','This is the definition of a fraudulent invoice.']),
+Q(['ضغطت على رابط في إيميل فوصلت لصفحة بتطلب منك دفع مبلغ. ده:','You clicked a link in an email and reached a page asking for payment. This is:'],[['احتيال بنقرة واحدة','One-click fraud'],['بحث في المهملات','Dumpster diving'],['تجسس مباشر','Shoulder surfing']],0,['نقرة واحدة على الرابط = صفحة دفع.','One click on a link = a payment page.']),
+Q(['موقع مزيف شكله زي موقع البنك علشان يسرق بياناتك:','A fake site that looks like your bank website to steal your data is:'],[['تصيّد (Phishing)','Phishing'],['دودة','Worm'],['Firewall','Firewall']],0,['التصيّد بيستخدم مواقع مزيفة متنكرة.','Phishing uses disguised fake websites.']),
+Q(['وصلتك رسالة: «حسابك البنكي هيتقفل! ادخل الرابط وسجّل بياناتك». أنسب تصرف؟','You got a message: "Your bank account will be closed! Click the link and enter your data." Best action?'],[['متدخلش الرابط، وتتأكد من البنك مباشرة','Do not click the link; contact the bank directly'],['أدخل بياناتي بسرعة','Enter my data quickly'],['أبعتها لأصحابي','Forward it to friends']],0,['دي رسالة تصيّد كلاسيكية.','This is a classic phishing message.']),
+Q(['الهندسة الاجتماعية بتعتمد على:','Social engineering depends on:'],[['استغلال الثقة والخطأ البشري','Exploiting trust and human error'],['كسر الأجهزة بالقوة','Breaking devices by force'],['قطع الكهرباء','Cutting the power']],0,['الضحية هي اللي بتدّي المعلومة.','The victim is the one who gives away the information.']),
+Q(['حد اتصل بيك وقال إنه من الدعم الفني وطلب الباسورد. ده:','Someone called saying he is from tech support and asked for your password. This is:'],[['انتحال شخصية','Impersonation'],['تجسس مباشر','Shoulder surfing'],['بحث في المهملات','Dumpster diving']],0,['تظاهر بأنه شخص آخر = انتحال الشخصية.','Pretending to be someone else = impersonation.']),
+Q(['شخص واقف وراك عند ATM بيبص على الرقم السري وانت بتكتبه:','A person behind you at the ATM watches your PIN as you type it:'],[['تجسس مباشر (Shoulder surfing)','Shoulder surfing'],['انتحال شخصية','Impersonation'],['تصيّد','Phishing']],0,['التلصص على الشاشة أو لوحة المفاتيح.','Spying on the screen or keyboard.']),
+Q(['شخص فتّش في مهملات شركة علشان يلاقي ورق سري:','A person searched a company trash for confidential papers:'],[['البحث في المهملات (Dumpster diving)','Dumpster diving'],['التزوير','Skimming'],['التصيّد','Phishing']],0,['بحث عن معلومات سرية تم التخلص منها.','Searching for confidential info that was thrown away.']),
+Q(['جهاز صغير على ماكينة الصرف بينسخ بيانات بطاقتك. ده:','A small device on an ATM copies your card data. This is:'],[['التزوير (Skimming)','Skimming'],['انتحال شخصية','Impersonation'],['احتيال بالفواتير','Fraudulent billing']],0,['استخراج البيانات من بطاقة بشكل غير قانوني.','Illegally extracting data from a card.']),
+Q(['الهندسة الاجتماعية بتعتمد على التقنية والأجهزة فقط.','Social engineering depends only on technology and devices.'],TF,1,['غلط، بتعتمد على استغلال الثقة والخطأ البشري.','False, it relies on exploiting trust and human error.']),
+Q(['أفضل طريقة لحماية ورقك السري من البحث في المهملات:','Best way to protect your confidential papers from dumpster diving:'],[['تمزيقه قبل رميه','Shred it before throwing it away'],['رميه كما هو','Throw it away as is'],['تسييبه على المكتب','Leave it on the desk']],0,['التخلص الآمن من الورق يمنع الاستغلال.','Safe disposal prevents misuse.']),
+Q(['أفضل طريقة لتفادي التجسس المباشر:','Best way to avoid shoulder surfing:'],[['تغطية لوحة الأرقام وإنت بتكتب','Cover the keypad while typing'],['كتابة الرقم بصوت عالي','Say the PIN out loud'],['إعطاء الرقم لصاحبك','Give the PIN to a friend']],0,['منع الشخص اللي وراك من الرؤية.','Stop the person behind you from seeing.']),
+Q(['سياسة أمن المعلومات هي:','An information security policy is:'],[['قواعد وإرشادات تضعها المنظمة لحماية معلوماتها','Rules and guidelines an organization sets to protect its information'],['برنامج لمكافحة الفيروسات','An antivirus program'],['نوع من التشفير','A type of encryption']],0,['هي مرجع القواعد داخل المنظمة.','It is the rulebook inside the organization.']),
+Q(['سياسة أمن المعلومات بتوضح:','An information security policy explains:'],[['مسؤوليات الموظفين والإجراءات المتبعة','Employee responsibilities and the procedures to follow'],['أسعار الأجهزة','Device prices'],['ألوان الموقع','Website colors']],0,['علشان كل موظف يعرف دوره.','So every employee knows their role.']),
+Q(['التجسس المباشر (Shoulder surfing) ممكن يحصل بدون أي برامج.','Shoulder surfing can happen without any software.'],TF,0,['صح، مجرد النظر لشاشة أو لوحة المفاتيح.','True, just looking at a screen or keyboard.'])
+]},
+/* ============ 3-4 ============ */
+{no:'3-4',ic:'🔐',n:['التشفير','Encryption'],
+goal:['هتفهم إزاي المعلومات بتتحمي وهي مسافرة، وأنواع التشفير التلاتة','You will understand how information stays protected while travelling, and the 3 types of encryption'],
+secs:[
+{ic:'🔐',t:['التشفير','Encryption'],pts:[
+['طريقة تُستخدم عند إرسال المعلومات','A method used when sending information'],
+['لمنع اعتراضها من أي شخص غير المستلم المقصود','To stop anyone other than the intended recipient from intercepting it']]},
+{ic:'🔓',t:['فك التشفير','Decryption'],pts:[
+['تحويل النص المشفر مرة أخرى إلى شكله الأصلي','Converting the encrypted text back to its original form'],
+['كنص عادي','As plain text']]},
+{ic:'🗝️',t:['المفتاح','Key'],pts:[
+['الإجراء أو البيانات المستخدمة للتشفير وفك التشفير','The procedure or data used for encryption and decryption']]},
+{ic:'🔄',t:['رحلة الرسالة','The message journey'],pts:[
+['1️⃣ نص عادي (Plain text) عند المرسل','1️⃣ Plain text at the sender'],
+['2️⃣ تشفير بالمفتاح ⬅️ نص مشفر','2️⃣ Encrypt with the key ➜ ciphertext'],
+['3️⃣ النص المشفر ميفهمهوش المعترض لو لقاه في الطريق','3️⃣ An interceptor cannot understand the ciphertext if they catch it'],
+['4️⃣ فك التشفير ⬅️ نص عادي عند المستلم','4️⃣ Decrypt ➜ plain text at the receiver']]},
+{ic:'🔁',t:['[1] المفتاح المتناظر','[1] Symmetric key'],pts:[
+['نفس المفتاح للتشفير وفك التشفير','The same key encrypts and decrypts'],
+['أسرع','Faster'],
+['لكن المشكلة: تسليم المفتاح بأمان','But the problem: delivering the key safely']],
+tip:['زي قفل بيتك: نفس المفتاح بيقفل وبيفتح.','Like your house lock: the same key locks and unlocks.']},
+{ic:'📮',t:['[2] المفتاح العام','[2] Public key'],pts:[
+['مفتاح عام للتشفير متاح للجميع','A public key for encryption, available to everyone'],
+['ومفتاح خاص لفك التشفير عند المستلم فقط','And a private key for decryption, held only by the receiver'],
+['أكثر أمانًا لكنه أبطأ','More secure but slower']],
+tip:['زي صندوق بريد: أي حد يقدر يرمي فيه رسالة (المفتاح العام)، بس صاحب البيت معاه المفتاح اللي يفتحه (المفتاح الخاص).','Like a mailbox: anyone can drop a letter in (public key), but only the owner has the key that opens it (private key).']},
+{ic:'⏱️',t:['[3] المفتاح المؤقت (الجلسة)','[3] Session key'],pts:[
+['يجمع بين الطريقتين','Combines both methods'],
+['بيتنشأ مفتاح جلسة مؤقت لكل اتصال','A temporary session key is created for each connection'],
+['بيُستخدم في SSL/TLS','Used in SSL/TLS']]}
+],
+rec:[['التشفير يحمي الرسالة من الاعتراض، وفك التشفير يرجّعها نص عادي','Encryption protects a message from interception; decryption restores plain text'],['متناظر: مفتاح واحد (سريع) • عام: مفتاحين (أأمن وأبطأ)','Symmetric: one key (fast) • Public: two keys (safer, slower)'],['مفتاح الجلسة = دمج الاتنين ويُستخدم في SSL/TLS','Session key = a mix of both, used in SSL/TLS']],
+qs:[
+Q(['هدف التشفير هو:','The purpose of encryption is:'],[['منع اعتراض المعلومات من أي شخص غير المستلم المقصود','Preventing anyone but the intended recipient from intercepting the information'],['ضغط الملفات','Compressing files'],['زيادة سرعة الإنترنت','Increasing Internet speed']],0,['التشفير بيحمي المعلومات أثناء الإرسال.','Encryption protects information while it is sent.']),
+Q(['فك التشفير هو:','Decryption is:'],[['تحويل النص المشفر إلى نص عادي','Converting encrypted text back to plain text'],['تحويل النص العادي إلى مشفر','Converting plain text to encrypted'],['حذف الرسالة','Deleting the message']],0,['فك التشفير عكس التشفير.','Decryption is the opposite of encryption.']),
+Q(['المفتاح (Key) في التشفير هو:','A key in encryption is:'],[['الإجراء أو البيانات المستخدمة للتشفير وفك التشفير','The procedure or data used for encryption and decryption'],['مفتاح الكيبورد','A keyboard key'],['باسورد الواي فاي','The Wi-Fi password']],0,['المفتاح هو اللي بيقفل ويفتح التشفير.','The key is what locks and unlocks the encryption.']),
+Q(['النص قبل التشفير بيسمى:','Text before encryption is called:'],[['نص عادي (Plain text)','Plain text'],['نص مشفر','Ciphertext'],['مفتاح','Key']],0,['النص العادي هو الأصل.','Plain text is the original.']),
+Q(['لو معترض لقى النص المشفر في الطريق، يقدر يفهمه بسهولة بدون المفتاح.','If an interceptor finds the ciphertext on the way, they can easily understand it without the key.'],TF,1,['غلط، النص المشفر لا يفهمه المعترض.','False, an interceptor cannot understand the ciphertext.']),
+Q(['التشفير اللي بيستخدم نفس المفتاح للتشفير وفك التشفير:','The encryption that uses the same key for encrypting and decrypting:'],[['المفتاح المتناظر','Symmetric key'],['المفتاح العام','Public key'],['مفتاح الجلسة','Session key']],0,['متناظر = متماثل = مفتاح واحد.','Symmetric = one single key.']),
+Q(['أسرع أنواع التشفير:','The fastest type of encryption:'],[['المفتاح المتناظر','Symmetric key'],['المفتاح العام','Public key'],['كلهم بنفس السرعة','All the same speed']],0,['المتناظر أسرع، لكن مشكلته تسليم المفتاح.','Symmetric is faster, but delivering the key is its problem.']),
+Q(['مشكلة المفتاح المتناظر:','The problem with symmetric keys:'],[['تسليم المفتاح بأمان','Delivering the key safely'],['بطيء جدًا','Very slow'],['بيحتاج مفتاحين','Needs two keys']],0,['لو المفتاح اتسرق في الطريق، التشفير بيفشل.','If the key is stolen on the way, the encryption fails.']),
+Q(['في المفتاح العام، المفتاح المتاح للجميع يُستخدم في:','In public-key encryption, the key available to everyone is used for:'],[['التشفير','Encryption'],['فك التشفير','Decryption'],['حذف الرسالة','Deleting the message']],0,['العام = للتشفير، والخاص = لفك التشفير.','Public = encrypt, private = decrypt.']),
+Q(['المفتاح الخاص:','The private key:'],[['عند المستلم فقط ويُستخدم لفك التشفير','Held only by the receiver and used to decrypt'],['متاح للجميع','Available to everyone'],['بيتبعت مع الرسالة','Sent along with the message']],0,['خاص = سري عند صاحبه.','Private = secret, kept by its owner.']),
+Q(['أكثر أنواع التشفير أمانًا لكنه أبطأ:','The most secure but slowest type of encryption:'],[['المفتاح العام','Public key'],['المفتاح المتناظر','Symmetric key'],['لا يوجد','None']],0,['المفتاح العام أأمن وأبطأ.','Public key is safer and slower.']),
+Q(['مفتاح الجلسة بيُستخدم في:','The session key is used in:'],[['SSL/TLS','SSL/TLS'],['تنسيق الورد','Word formatting'],['الألعاب فقط','Games only']],0,['SSL/TLS بتعمل مفتاح جلسة مؤقت لكل اتصال.','SSL/TLS creates a temporary session key for every connection.']),
+Q(['مفتاح الجلسة بيجمع بين طريقتي التشفير (المتناظر والعام).','The session key combines both encryption methods (symmetric and public).'],TF,0,['صح، وده بيدّي سرعة وأمان.','True, giving both speed and security.']),
+Q(['صندوق البريد (أي حد يرمي فيه رسالة وصاحبه بس يفتحه) مثال على:','A mailbox (anyone can drop a letter but only the owner opens it) is an example of:'],[['المفتاح العام والخاص','Public and private keys'],['المفتاح المتناظر','Symmetric key'],['الفيروسات','Viruses']],0,['الرمي = المفتاح العام، الفتح = المفتاح الخاص.','Dropping = public key, opening = private key.'])
+]},
+/* ============ 3-5 ============ */
+{no:'3-5',ic:'✍️',n:['التوقيع الرقمي و SSL/TLS','Digital Signature & SSL/TLS'],
+goal:['هتفهم إزاي نتأكد من هوية المرسل وإن الرسالة ما اتغيرتش، وإزاي نعرف إن الموقع مشفّر','You will see how we verify the sender and that a message was not altered, and how to tell a site is encrypted'],
+secs:[
+{ic:'#️⃣',t:['دالة التجزئة','Hash function'],pts:[
+['دالة تحسب قيمة فريدة بناءً على بيانات الإدخال','A function that calculates a unique value from the input data'],
+['نفس البيانات تعطي دائمًا نفس القيمة','The same data always gives the same value'],
+['تغيير حرف واحد يغيّر القيمة تمامًا','Changing one single character changes the value completely']],
+tip:['زي بصمة للملف: لو الملف اتغيّر حتى حرف، البصمة بتتغير.','Like a fingerprint for the file: change even one character and the fingerprint changes.']},
+{ic:'✍️',t:['التوقيع الرقمي','Digital signature'],pts:[
+['تقنية تستخدم التشفير بالمفتاح العام وقيم التجزئة','A technique using public-key encryption and hash values'],
+['للتحقق من هوية المرسل','To verify the sender identity'],
+['وسلامة الرسالة (أنها لم تُعبث)','And the message integrity (that it was not tampered with)']]},
+{ic:'🏛️',t:['جهة التصديق','Certification Authority (CA)'],pts:[
+['منظمة طرف ثالث موثوقة','A trusted third-party organization'],
+['تتحقق من أن المفتاح العام يخص فعلاً صاحبه المعلن','Checks that a public key really belongs to its declared owner']]},
+{ic:'📨',t:['رحلة الرسالة الموقّعة','The signed message journey'],pts:[
+['✍️ المرسل: يوقّع بمفتاحه الخاص + تجزئة الرسالة','✍️ Sender: signs with the private key + hash of the message'],
+['📩 الرسالة الموقعة: تسافر عبر الإنترنت','📩 The signed message: travels across the Internet'],
+['✅ المستلم: يتحقق بالمفتاح العام — أي تعديل يظهر فورًا','✅ Receiver: verifies with the public key — any change shows immediately']]},
+{ic:'🌐',t:['SSL/TLS','SSL/TLS'],pts:[
+['تقنية تُستخدم لتشفير الاتصال بين خادم الويب ومتصفح الويب','A technology that encrypts the connection between a web server and a web browser'],
+['وتستخدم طريقة مفتاح الجلسة (Session Key)','And uses the session key method'],
+['ويبدأ رابط URL لصفحة الويب المشفرة بـ «https://»','The URL of an encrypted web page starts with "https://"']],
+tip:['⚠️ قبل ما تدخل أي بيانات بنكية، بص على الرابط: https:// وقفل الأمان. لو لقيت http:// بس — بلاش تكتب أي حاجة، الاتصال مش مشفر!','⚠️ Before entering any banking data, look at the link: https:// and the lock icon. If it is only http:// — type nothing, the connection is not encrypted!']}
+],
+rec:[['التجزئة = بصمة فريدة، وأي تغيير بيغيّرها','Hash = unique fingerprint; any change alters it'],['التوقيع الرقمي = هوية المرسل + سلامة الرسالة','Digital signature = sender identity + message integrity'],['https:// = اتصال مشفر • http:// = غير مشفر','https:// = encrypted • http:// = not encrypted']],
+qs:[
+Q(['دالة التجزئة (Hash function) هي:','A hash function is:'],[['دالة تحسب قيمة فريدة بناءً على بيانات الإدخال','A function that calculates a unique value from the input data'],['برنامج لمسح الفيروسات','A virus-removal program'],['جدار حماية','A firewall']],0,['القيمة بتمثل البيانات زي البصمة.','The value represents the data like a fingerprint.']),
+Q(['نفس البيانات في دالة التجزئة بتعطي دائمًا:','The same data in a hash function always gives:'],[['نفس القيمة','The same value'],['قيمة مختلفة كل مرة','A different value every time'],['لا شيء','Nothing']],0,['ثابتة لنفس المدخلات.','It is constant for the same input.']),
+Q(['تغيير حرف واحد في الرسالة بيغيّر قيمة التجزئة تمامًا.','Changing one character in the message completely changes the hash value.'],TF,0,['صح، وده اللي بيكشف التعديل.','True, and that is what reveals tampering.']),
+Q(['التوقيع الرقمي بيُستخدم للتحقق من:','A digital signature is used to verify:'],[['هوية المرسل وسلامة الرسالة','The sender identity and the message integrity'],['سرعة الإنترنت','Internet speed'],['حجم الملف','File size']],0,['هوية + سلامة.','Identity + integrity.']),
+Q(['مين اللي بيوقّع الرسالة ومعاه إيه؟','Who signs the message, and with what?'],[['المرسل بمفتاحه الخاص + تجزئة الرسالة','The sender, with the private key + the message hash'],['المستلم بمفتاحه الخاص','The receiver, with their private key'],['الموقع بكلمة سر عادية','The website, with an ordinary password']],0,['المرسل يوقّع، والمستلم يتحقق.','The sender signs; the receiver verifies.']),
+Q(['المستلم بيتحقق من التوقيع باستخدام:','The receiver verifies the signature using:'],[['المفتاح العام للمرسل','The sender public key'],['المفتاح الخاص للمرسل','The sender private key'],['الـ PIN','The PIN']],0,['المفتاح العام متاح للجميع علشان يتحققوا.','The public key is available to everyone for verification.']),
+Q(['لو الرسالة اتعدّلت أثناء الطريق، إيه اللي بيحصل عند التحقق؟','If the message was modified on the way, what happens at verification?'],[['التعديل يظهر فورًا','The change is detected immediately'],['مفيش حاجة بتحصل','Nothing happens'],['الرسالة بتتحذف','The message is deleted']],0,['قيمة التجزئة هتختلف.','The hash value will differ.']),
+Q(['جهة التصديق (CA) هي:','A Certification Authority (CA) is:'],[['طرف ثالث موثوق يتأكد أن المفتاح العام يخص صاحبه فعلاً','A trusted third party that confirms a public key really belongs to its owner'],['مرسل الرسالة','The message sender'],['نوع من الفيروسات','A type of virus']],0,['بتدّي الثقة في المفاتيح العامة.','It provides trust in public keys.']),
+Q(['SSL/TLS بتُستخدم ل:','SSL/TLS is used to:'],[['تشفير الاتصال بين خادم الويب والمتصفح','Encrypt the connection between a web server and a browser'],['حذف الإعلانات','Remove ads'],['تسريع الألعاب','Speed up games']],0,['بتحمي الاتصال أثناء التصفح.','It protects the connection while browsing.']),
+Q(['رابط صفحة الويب المشفرة يبدأ بـ:','The URL of an encrypted web page starts with:'],[['https://','https://'],['http://','http://'],['ftp://','ftp://']],0,['الـ s معناها secure.','The "s" stands for secure.']),
+Q(['موقع بنك رابطه http:// بدون s. التصرف الصحيح:','A bank site link is http:// without the s. The right action:'],[['متكتبش أي بيانات بنكية لأن الاتصال مش مشفر','Do not enter any banking data because the connection is not encrypted'],['أدخل بياناتي عادي','Enter my data normally'],['أبعت الباسورد لصاحبي','Send my password to a friend']],0,['لازم https:// وقفل الأمان قبل أي بيانات حساسة.','Look for https:// and the lock icon before any sensitive data.']),
+Q(['SSL/TLS بتستخدم مفتاح الجلسة (Session Key).','SSL/TLS uses a session key.'],TF,0,['صح، مفتاح مؤقت لكل اتصال.','True, a temporary key for each connection.']),
+Q(['التوقيع الرقمي بيعتمد على:','A digital signature relies on:'],[['التشفير بالمفتاح العام وقيم التجزئة','Public-key encryption and hash values'],['الكتابة بخط اليد','Handwriting'],['الألوان','Colors']],0,['تشفير + تجزئة.','Encryption + hashing.']),
+Q(['التوقيع الرقمي بيخفي محتوى الرسالة عن الجميع.','A digital signature hides the message content from everyone.'],TF,1,['غلط، هدفه التحقق من الهوية والسلامة، مش إخفاء المحتوى (ده شغل التشفير).','False, its goal is verifying identity and integrity, not hiding content (that is encryption job).'])
+]}
+];
+
+/* ====== state ====== */
+let lang='ar',theme='',page='home',mode='read',prog={},qz=null;
+try{lang=localStorage.getItem('u3l')||'ar'}catch(e){}
+try{theme=localStorage.getItem('u3t')||''}catch(e){}
+try{prog=JSON.parse(localStorage.getItem('u3p')||'{}')||{}}catch(e){prog={}}
+const t=x=>x[lang==='ar'?0:1],s=k=>S[lang][k];
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const save=()=>{try{localStorage.setItem('u3p',JSON.stringify(prog))}catch(e){}};
+const ltitle=l=>s('lesson')+' '+l.no+': '+t(l.n);
+
+/* ====== quiz engine ====== */
+function setOrd(){const q=qz.list[qz.i];qz.ord=q?(q.o===TF?q.o.map((_,k)=>k):shuf(q.o.map((_,k)=>k))):[]}
+function newQuiz(key,list){qz={key,list:shuf(list),i:0,sel:null,score:0,wrong:[],ord:[]};setOrd()}
+function pick(k){if(!qz||qz.sel!==null)return;const q=qz.list[qz.i];qz.sel=k;if(k===q.a)qz.score++;else qz.wrong.push(q);render()}
+function nextQ(){qz.i++;qz.sel=null;setOrd();if(qz.i>=qz.list.length){const o=prog[qz.key];prog[qz.key]={best:Math.max(o?o.best:0,qz.score),total:qz.list.length};save()}render();const b=$('#qbox');if(b)b.scrollIntoView({behavior:'smooth',block:'start'})}
+function finalList(){let a=[];LS.forEach(l=>{a=a.concat(shuf(l.qs).slice(0,6))});return a}
+function startLesson(i){page='l'+i;mode='quiz';if(!qz||qz.key!==page)newQuiz(page,LS[i].qs);render();scrollTo({top:0,behavior:'smooth'})}
+function retry(){if(qz.key==='final')newQuiz('final',finalList());else newQuiz(qz.key,LS[+qz.key.slice(1)].qs);render();scrollTo({top:0,behavior:'smooth'})}
+function startFinal(){newQuiz('final',finalList());render();scrollTo({top:0,behavior:'smooth'})}
+function setMode(m){mode=m;render();scrollTo({top:0,behavior:'smooth'})}
+function go(p){page=p;mode='read';qz=null;render();scrollTo({top:0,behavior:'smooth'})}
+function setLang(){lang=lang==='ar'?'en':'ar';try{localStorage.setItem('u3l',lang)}catch(e){}render()}
+function toggleTheme(){const dark=theme?theme==='dark':!matchMedia('(prefers-color-scheme:light)').matches;theme=dark?'light':'dark';try{localStorage.setItem('u3t',theme)}catch(e){}render()}
+
+/* ====== views ====== */
+function quizView(){
+ const n=qz.list.length;if(qz.i>=n)return result();
+ const q=qz.list[qz.i],d=qz.sel!==null,LT=lang==='ar'?['أ','ب','ج','د']:['A','B','C','D'];
+ return `<div class="card qc"><div class="meta"><span>${s('q')} ${qz.i+1} / ${n}</span><span>✅ ${qz.score}</span></div><div class="pb"><i style="width:${qz.i/n*100}%"></i></div><div class="qt">${t(q.q)}</div><div class="os">${qz.ord.map((k,j)=>`<button class="o ${d?(k===q.a?'ok':qz.sel===k?'bad':''):''}" ${d?'disabled':''} onclick="pick(${k})"><b>${LT[j]}</b><span>${t(q.o[k])}</span></button>`).join('')}</div>${d?`<div class="ex ${qz.sel===q.a?'':'no'}">${qz.sel===q.a?'✅ '+s('right'):'❌ '+s('wrong')}<br>${t(q.x)}</div><div class="nx"><button class="btn" onclick="nextQ()">${qz.i<n-1?s('nextq'):s('res')}</button></div>`:''}</div>`}
+function result(){
+ const n=qz.list.length,sc=qz.score,p=sc/n,msg=p>=.9?s('m1'):p>=.7?s('m2'):s('m3'),key=qz.key,isF=key==='final',i=isF?-1:+key.slice(1);
+ let btns=`<button class="btn" onclick="retry()">${s('retry')}</button>`;
+ if(!isF){btns+=`<button class="btn ghost" onclick="setMode('read')">${s('backr')}</button>`;btns+=i<LS.length-1?`<button class="btn" onclick="go('l${i+1}')">${s('nextl')}</button>`:`<button class="btn" onclick="go('final')">${s('toexam')}</button>`}else btns+=`<button class="btn ghost" onclick="go('home')">${s('tohome')}</button>`;
+ return `<div class="card res"><div class="big grad">${sc} / ${n}</div><h2>${msg}</h2><div class="dim">${s('best')}: ${prog[key]?prog[key].best:sc} / ${n}</div><div class="nx" style="justify-content:center">${btns}</div></div>`+
+ (qz.wrong.length?`<h3>${s('review')}</h3>`+qz.wrong.map(q=>`<div class="wr"><b>${t(q.q)}</b><div class="ca">✔ ${s('correct')}: ${t(q.o[q.a])}</div><div>${t(q.x)}</div></div>`).join(''):'')}
+function secCard(c){return `<div class="card sec"><h3><span class="ic">${c.ic}</span><span>${t(c.t)}${lang==='ar'&&c.t[1]&&c.t[1]!==c.t[0]&&!/^\[/.test(c.t[1])?`<small>${c.t[1]}</small>`:''}</span></h3><ul class="pts">${c.pts.map(p=>`<li><span>${t(p)}</span></li>`).join('')}</ul>${c.tip?`<div class="tip">💡 <b>${s('simple')}:</b> ${t(c.tip)}</div>`:''}</div>`}
+function lessonPage(i){
+ const l=LS[i],k='l'+i;
+ const H=`<div class="hero"><span class="pill">${s('lesson')} ${l.no}</span><h2>${l.ic} ${t(l.n)}</h2><div class="dim">${t(l.goal)}</div><div class="seg"><button class="${mode==='read'?'on':''}" onclick="setMode('read')">📖 ${s('read')}</button><button class="${mode==='quiz'?'on':''}" onclick="startLesson(${i})">❓ ${s('qs')} (${l.qs.length})</button></div></div>`;
+ if(mode==='quiz'){if(!qz||qz.key!==k)newQuiz(k,l.qs);return H+`<div id="qbox">${quizView()}</div>`}
+ return H+`<div class="grid" style="margin-top:14px">${l.secs.map(secCard).join('')}</div><div class="card rec"><h3>${s('rec')}</h3><ul class="pts">${l.rec.map(p=>`<li><span>${t(p)}</span></li>`).join('')}</ul></div><div class="nx"><button class="btn" onclick="startLesson(${i})">${s('startq')}</button></div>`}
+function finalPage(){
+ if(qz&&qz.key==='final')return `<div class="hero"><span class="pill">🏆 ${s('final')}</span><h2>${s('examt')}</h2></div><div id="qbox">${quizView()}</div>`;
+ return `<div class="hero"><span class="pill">🏆 ${s('final')}</span><h2>${s('examt')}</h2><div class="dim">${s('examd')}</div></div><div class="card" style="margin-top:14px">${prog.final?`<div class="dim">${s('best')}: ${prog.final.best} / ${prog.final.total}</div>`:''}<div class="nx"><button class="btn" onclick="startFinal()">${s('startex')}</button></div></div>`}
+function homePage(){
+ return `<div class="hero"><span class="pill">${s('hp')}</span><h1>${s('ht')}</h1><div class="dim">${s('hs')}</div></div>
+ <h3>${s('how')}</h3><div class="steps"><div class="card step"><i>1</i><div><b>${s('h1')}</b><div class="dim" style="font-size:13px;line-height:1.6">${s('h1d')}</div></div></div><div class="card step"><i>2</i><div><b>${s('h2')}</b><div class="dim" style="font-size:13px;line-height:1.6">${s('h2d')}</div></div></div><div class="card step"><i>3</i><div><b>${s('h3')}</b><div class="dim" style="font-size:13px;line-height:1.6">${s('h3d')}</div></div></div></div>
+ <h3>${s('lessons')}</h3><div class="grid">${LS.map((l,i)=>{const p=prog['l'+i];return `<div class="card lc" onclick="go('l${i}')"><span class="ic">${l.ic}</span><div><small>${s('lesson')} ${l.no}</small><b>${t(l.n)}</b><small>${l.qs.length} ${s('nq')}${p?' · ✅ '+p.best+'/'+p.total:''}</small></div></div>`}).join('')}<div class="card lc" onclick="go('final')"><span class="ic">🏆</span><div><small>30 ${s('nq')}</small><b>${s('final')}</b>${prog.final?`<small>✅ ${prog.final.best}/${prog.final.total}</small>`:''}</div></div></div><div style="height:30px"></div>`}
+function render(){
+ const d=document.documentElement;d.lang=lang;d.dir=lang==='ar'?'rtl':'ltr';
+ if(theme)d.setAttribute('data-theme',theme);else d.removeAttribute('data-theme');
+ document.title=lang==='ar'?'الوحدة الثالثة · أمن المعلومات':'Unit 3 · Information Security';
+ $('#brand').textContent='م/ أحمد تامر · '+s('brand');$('#lg').textContent=s('lang');$('#ft').textContent=s('ft');
+ let xp=0,dn=0;Object.keys(prog).forEach(k=>{xp+=prog[k].best*10;dn++});
+ $('#xp').textContent='⭐ '+xp;$('#bar').style.width=Math.min(100,dn/(LS.length+1)*100)+'%';
+ const items=[['home','🏠',s('home'),''],...LS.map((l,i)=>['l'+i,l.ic,ltitle(l),prog['l'+i]?prog['l'+i].best+'/'+prog['l'+i].total:'']),['final','🏆',s('final'),prog.final?prog.final.best+'/'+prog.final.total:'']];
+ $('#nav').innerHTML=items.map(it=>`<button class="${page===it[0]?'on':''}" onclick="go('${it[0]}')"><span>${it[1]}</span><span class="t">${it[2]}</span>${it[3]?`<span class="bd">${it[3]}</span>`:''}</button>`).join('');
+ $('#main').innerHTML=page==='home'?homePage():page==='final'?finalPage():lessonPage(+page.slice(1));
+}
+render();
+</script>
+</body>
+</html>
